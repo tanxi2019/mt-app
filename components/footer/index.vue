@@ -1,7 +1,5 @@
 <template>
-  <div>
-   nav
-  </div>
+  <div>footer</div>
 </template>
 
 <script>
@@ -9,5 +7,6 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style scoped>
+
 </style>

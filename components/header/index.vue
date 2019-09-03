@@ -1,12 +1,12 @@
 <template>
-  <div>search</div>
+  <div>header</div>
 </template>
 
 <script>
 export default {
-
 }
 </script>
 
-<style lang="css">
+<style scoped>
+
 </style>
