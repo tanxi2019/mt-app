@@ -1,6 +1,6 @@
 <template>
   <div class="search-panel">
-   search
+    search
   </div>
 </template>
 
