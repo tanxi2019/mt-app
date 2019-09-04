@@ -1,13 +1,31 @@
 <template>
-    $END$
+    <div class="m-header">
+        <el-row>
+            <el-col>
+                <top-bar />
+            </el-col>
+        </el-row>
+        <el-row>
+            <el-col>
+                <search-bar />
+            </el-col>
+        </el-row>
+    </div>
 </template>
 
 <script>
-  export default {
-    name: 'index'
+import topBar from './topbar.vue'
+import searchBar from './searchbar.vue'
+export default {
+  name: 'index',
+  components: {
+    topBar,
+    searchBar
   }
+
+}
 </script>
 
 <style scoped>
-
+@import "../../assets/css/public/header/index.scss";
 </style>

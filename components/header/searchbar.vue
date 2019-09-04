@@ -1,13 +1,12 @@
 <template>
-    $END$
+  <div class="search-panel">
+   search
+  </div>
 </template>
 
 <script>
-  export default {
-    name: 'searchbar'
-  }
+export default {}
 </script>
 
-<style scoped>
-
+<style lang="css">
 </style>
