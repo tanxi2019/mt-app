@@ -5,22 +5,27 @@
         <emenu />
       </el-col>
       <el-col :span="19">
-        2
+        <life />
       </el-col>
     </el-row>
     <el-row :span="24">
-      3
+      <Artistic />
     </el-row>
   </div>
 </template>
 
 <script>
 
-import Emenu from '../components/index/menu.vue'
+import Emenu from '../components/index/menu'
+import Life from '../components/index/life'
+import Artistic from '../components/index/artistic'
 export default {
   components: {
     // eslint-disable-next-line vue/no-unused-components
-    Emenu
+    Emenu,
+    Life,
+    // eslint-disable-next-line vue/no-unused-components
+    Artistic
   }
 }
 </script>
