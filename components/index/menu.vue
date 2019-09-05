@@ -32,7 +32,9 @@
         <span
           v-for="v in item.child"
           :key="v"
-        >{{ v }}</span>
+        >
+          {{ v }}
+        </span>
       </template>
     </div>
   </div>
@@ -49,14 +51,6 @@ export default {
           type: ' food',
           name: ' 美食',
           child: [
-            {
-              title: '美食',
-              child: ['代金券', '甜点饮品', '火锅', '自助餐', '小吃快餐']
-            },
-            {
-              title: '美食',
-              child: ['代金券', '甜点饮品', '火锅', '自助餐', '小吃快餐']
-            },
             {
               title: '美食',
               child: ['代金券', '甜点饮品', '火锅', '自助餐', '小吃快餐']

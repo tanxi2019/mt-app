@@ -14,10 +14,10 @@
             @blur="blur"
             @input="input"
           />
-          <button class="el-button el-button--primary">
+          <el-button class="el-button el-button--primary">
             <!--suppress CheckEmptyScriptTag -->
             <i class="el-icon-search" />
-          </button>
+          </el-button>
           <dl
             v-if="isHotPlace"
             class="hotPlace"
@@ -42,13 +42,13 @@
             </dd>
           </dl>
         </div>
-        <p class="suggset">
+        <div class="suggset">
           <a href="/">故宫博物院</a>
           <a href="/">故宫博物院</a>
           <a href="/">故宫博物院</a>
           <a href="/">故宫博物院</a>
           <a href="/">故宫博物院</a>
-        </p>
+        </div>
         <ul class="nav">
           <li>
             <nuxt-link
