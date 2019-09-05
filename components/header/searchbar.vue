@@ -14,10 +14,11 @@
             @blur="blur"
             @input="input"
           />
-          <el-button class="el-button el-button--primary">
-            <!--suppress CheckEmptyScriptTag -->
-            <i class="el-icon-search" />
-          </el-button>
+          <!--suppress CheckEmptyScriptTag -->
+          <el-button
+            class="el-button el-button--primary"
+            icon="el-icon-search"
+          />
           <dl
             v-if="isHotPlace"
             class="hotPlace"
