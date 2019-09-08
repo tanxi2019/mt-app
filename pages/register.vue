@@ -163,14 +163,16 @@ export default {
       if (self.timerid) {
         return false
       }
-      this.$refs.ruleForm.validateField('name', (valid) => {
+      // eslint-disable-next-line
+      this.$refs['ruleForm'].validateField('name', (valid) => {
         namePass = valid
       })
       self.statusMsg = ''
       if (namePass) {
         return false
       }
-      this.$refs.ruleForm.validateField('email', (valid) => {
+      // eslint-disable-next-line
+      this.$refs['ruleForm'].validateField('email', (valid) => {
         emailPass = valid
       })
       if (!namePass && !emailPass) {

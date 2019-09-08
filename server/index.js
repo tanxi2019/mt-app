@@ -23,6 +23,7 @@ app.use(bodyParser({
 }))
 app.use(json())
 
+mongoose.set('useCreateIndex', true)
 mongoose.connect(dbConfig.dbs, {
   useNewUrlParser: true
 })
@@ -43,7 +44,6 @@ async function start () {
     await builder.build()
   }
   app.use(users.routes()).use(users.allowedMethods())
-
   app.use((ctx) => {
     ctx.status = 200 // koa defaults to 404 when it sees that status is unset
 
