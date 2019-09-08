@@ -18,7 +18,19 @@
     "koa": "^2.6.2",
     "nuxt": "^2.0.0",
     "vuex": "latest",
-    "vue": "latest"
+    "vue": "latest",
+    "mongoose": "latest",
+    "koa-redis": "latest",
+    "koa-router": "latest",
+    "nodemailer": "latest",
+    "koa-passport": "latest",
+    "passport-local": "latest",
+    "consola": "latest",
+    "koa-generic-session": "latest",
+    "koa-bodyparser": "latest",
+    "koa-json": "latest",
+    "crypto-js": "latest",
+    "axios": "latest"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^1.0.1",
