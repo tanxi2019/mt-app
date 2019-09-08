@@ -57,8 +57,9 @@
 </template>
 
 <script>
+import CryptoJS from 'crypto-js'
 export default {
-  data: () => {
+  data () {
     return {
       checked: '',
       username: '',
@@ -68,7 +69,24 @@ export default {
   },
   layout: 'blank',
   methods: {
-    login () {}
+    login () {
+      const self = this
+      self.$axios.post('/users/signin', {
+        username: window.encodeURIComponent(self.username),
+        // eslint-disable-next-line no-undef
+        password: CryptoJS.MD5(self.password).toString()
+      }).then(({ status, data }) => {
+        if (status === 200) {
+          if (data && data.code === 0) {
+            location.href = '/'
+          } else {
+            self.error = data.msg
+          }
+        } else {
+          self.error = `服务器出错`
+        }
+      })
+    }
   }
 }
 </script>

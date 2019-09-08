@@ -30,7 +30,8 @@
     "koa-bodyparser": "latest",
     "koa-json": "latest",
     "crypto-js": "latest",
-    "axios": "latest"
+    "axios": "latest",
+    "koa2-cors": "latest"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^1.0.1",
