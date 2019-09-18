@@ -45,13 +45,17 @@ module.exports = {
   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios'// axios全局引用
   ],
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+    proxy: true // 代理跨域
+  },
+  proxy: { // 解决跨域
+    '/api': 'http://127.0.0.1:3000/'
   },
   /*
   ** Build configuration

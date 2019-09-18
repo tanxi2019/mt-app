@@ -145,6 +145,8 @@ router.get('/exit', async (ctx, next) => {
   }
 })
 
+// eslint-disable-next-line require-await
+// eslint-disable-next-line require-await
 router.get('/getUser', async (ctx) => {
   if (ctx.isAuthenticated()) {
     const { username, email } = ctx.session.passport.user

@@ -1,13 +1,12 @@
 import Koa from 'koa'
-import consola from 'consola'
 import { Nuxt, Builder } from 'nuxt'
-
+import consola from 'consola'
 import mongoose from 'mongoose'
 import bodyParser from 'koa-bodyparser'
 import session from 'koa-generic-session'
-import Redis from 'koa-redis'
+import Redis from 'koa-redis'// redis
 import json from 'koa-json'
-import cors from 'koa2-cors'
+// import cors from 'koa2-cors' // 跨域中间件
 import dbConfig from './dbs/config'
 import passport from './interface/utils/passport'
 import users from './interface/users'
@@ -16,14 +15,16 @@ const app = new Koa()
 const host = process.env.HOST || '127.0.0.1'
 const port = process.env.PORT || 3000
 
-app.use(cors({
-  exposeHeaders: ['WWW-Authenticate', 'Server-Authorization', 'Date'],
-  maxAge: 100,
-  credentials: true,
-  allowMethods: ['GET', 'POST', 'OPTIONS'],
-  allowHeaders: ['Content-Type', 'Authorization', 'Accept', 'X-Custom-Header', 'anonymous'],
-}))
-app.keys = ['mt', 'keyskeys']
+// app.use(cors({ // 后端跨域
+//   exposeHeaders: ['WWW-Authenticate', 'Server-Authorization', 'Date'],
+//   maxAge: 100,
+//   credentails: true,
+//   origin: '*',
+//   allowMethods: ['GET', 'POST', 'OPTIONS'],
+//   allowHeaders: ['Content-Type', 'Authorization', 'Accept', 'X-Custom-Header', 'anonymous']
+// }))
+
+app.keys = ['keys', 'keyskeys']
 app.proxy = true
 app.use(session({ key: 'mt', prefix: 'mt:uid', store: new Redis() }))
 app.use(bodyParser({
