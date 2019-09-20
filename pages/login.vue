@@ -59,6 +59,7 @@
 <script>
 import CryptoJS from 'crypto-js'
 export default {
+  layout: 'blank',
   data () {
     return {
       checked: '',
@@ -67,7 +68,6 @@ export default {
       error: ''
     }
   },
-  layout: 'blank',
   methods: {
     login () {
       const self = this

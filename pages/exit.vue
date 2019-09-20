@@ -1,6 +1,5 @@
 <template>
-  <!--suppress CheckEmptyScriptTag -->
-  <div class="exit" />
+  <div class="" />
 </template>
 
 <script>

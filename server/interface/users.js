@@ -1,3 +1,4 @@
+/* eslint-disable require-await */
 import Router from 'koa-router'
 import Redis from 'koa-redis'
 import nodeMailer from 'nodemailer'
@@ -121,6 +122,7 @@ router.post('/verify', async (ctx, next) => {
   }
   await transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
+      // eslint-disable-next-line no-console
       return console.log(error)
     } else {
       Store.hmset(`nodemail:${ko.user}`, 'code', ko.code, 'expire', ko.expire, 'email', ko.email)
@@ -145,9 +147,8 @@ router.get('/exit', async (ctx, next) => {
   }
 })
 
-// eslint-disable-next-line require-await
-// eslint-disable-next-line require-await
 router.get('/getUser', async (ctx) => {
+  // noinspection JSUnresolvedFunction
   if (ctx.isAuthenticated()) {
     const { username, email } = ctx.session.passport.user
     ctx.body = {
