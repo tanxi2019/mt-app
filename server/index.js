@@ -9,8 +9,10 @@ import Redis from 'koa-redis'
 import json from 'koa-json'
 import dbConfig from './dbs/config'
 import passport from './interface/utils/passport'
+
 import users from './interface/users'
 import geo from './interface/geo'
+import search from './interface/search'
 
 const app = new Koa()
 const host = process.env.HOST || '127.0.0.1'
@@ -33,6 +35,7 @@ mongoose.connect(dbConfig.dbs, { // 链接数据库
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(geo.routes()).use(geo.allowedMethods())
+app.use(search.routes()).use(search.allowedMethods())
 
 // Import and Set Nuxt.js options
 const config = require('../nuxt.config.js')

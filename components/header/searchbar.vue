@@ -25,10 +25,10 @@
           >
             <dt>热门搜索</dt>
             <dd
-              v-for="(item,idx) in hotPlace"
+              v-for="(item,idx) in $store.state.home.hotPlace.slice(0,5)"
               :key="idx"
             >
-              {{ item }}
+              {{ item.name }}
             </dd>
           </dl>
           <dl
@@ -39,16 +39,16 @@
               v-for="(item,idx) in searchList"
               :key="idx"
             >
-              {{ item }}
+              {{ item.name }}
             </dd>
           </dl>
         </div>
         <div class="suggset">
-          <a href="/">故宫博物院</a>
-          <a href="/">故宫博物院</a>
-          <a href="/">故宫博物院</a>
-          <a href="/">故宫博物院</a>
-          <a href="/">故宫博物院</a>
+          <a
+            v-for="(item,idx) in $store.state.home.hotPlace.slice(0,6)"
+            :key="idx"
+            :href="'/products?keyword='+encodeURIComponent(item.name)"
+          >{{ item.name }}</a>
         </div>
         <ul class="nav">
           <li>
@@ -123,27 +123,15 @@
 </template>
 
 <script>
-
+import _ from 'lodash'
 export default {
   name: 'Searchbar',
   data () {
     return {
       search: '', // 输入框的值
       isFocus: false, // 判断显隐
-      hotPlace: [
-        '火锅',
-        '火锅',
-        '火锅',
-        '火锅',
-        '火锅'
-      ],
-      searchList: [
-        '故宫',
-        '故宫',
-        '故宫',
-        '故宫',
-        '故宫'
-      ]
+      hotPlace: [],
+      searchList: []
     }
   },
   computed: {
@@ -168,13 +156,27 @@ export default {
       }, 200)
     },
     // eslint-disable-next-line
-    input:function () {
-      // eslint-disable-next-line no-console
-      console.log('测试')
-    }
+    input:_.debounce(async function(){
+      const self = this
+      const city = self.$store.state.geo.position.city.replace('市', '')
+      self.searchList = []
+      // eslint-disable-next-line no-unused-vars
+      const { status, data: { top } } = await self.$axios.get('/search/top', {
+        params: {
+          input: self.search,
+          city
+        }
+      })
+      self.searchList = top.slice(0, 10)
+    }, 300)
   }
 }
 </script>
 
 <style lang="css">
+ .suggset a{
+    margin-right: 10px;
+    margin-bottom: 3px;
+    display: inline-block;
+  }
 </style>

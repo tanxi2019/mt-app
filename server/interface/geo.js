@@ -1,4 +1,5 @@
 import Router from 'koa-router'
+import Province from '../dbs/models/province'
 import axios from './utils/axios'
 
 const router = new Router({ prefix: '/geo' })
@@ -23,6 +24,28 @@ router.get('/getPosition', async (ctx) => {
       province: '',
       city: ''
     }
+  }
+})
+
+router.get('/province', async (ctx) => {
+  // 本地数据
+  // const province = await Province.find()
+  // ctx.body = {
+  //   province: province.map((item) => {
+  //     return {
+  //       id: item.id,
+  //       name: item.value[0]
+  //     }
+  //   })
+  // }
+  // 线上服务
+  const { status, data: {
+    province
+  } } = await axios.get(`http://cp-tools.cn/geo/province?sign=${sign}`)
+  ctx.body = {
+    province: status === 200
+      ? province
+      : []
   }
 })
 

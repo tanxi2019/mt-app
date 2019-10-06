@@ -31,7 +31,8 @@
     "koa-json": "latest",
     "crypto-js": "latest",
     "axios": "latest",
-    "koa2-cors": "latest"
+    "koa2-cors": "latest",
+    "js-pinyin": "latest"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^1.0.1",
@@ -45,6 +46,7 @@
     "node-sass": "^4.12.0",
     "nodemon": "^1.18.9",
     "sass-loader": "^8.0.0",
-    "webpack": "^4.39.3"
+    "webpack": "^4.39.3",
+    "lodash": "latest"
   }
 }

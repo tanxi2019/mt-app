@@ -9,13 +9,11 @@
       >
         全部
       </dd>
-      <!--suppress CheckEmptyScriptTag -->
       <dd
         :class="{active:kind==='part'}"
         kind="part"
         keyword="美食"
-      />
-      <dd :class="{active:kind==='part'}" kind="part" keyword="美食">
+      >
         约会聚餐
       </dd>
       <dd
@@ -52,7 +50,6 @@
           <img
             :src="item.img"
             class="image"
-            alt=""
           >
           <ul class="cbody">
             <li class="title">
@@ -72,7 +69,7 @@
 </template>
 <script>
 export default {
-  data () {
+  data: () => {
     return {
       kind: 'all',
       list: {
@@ -89,10 +86,58 @@ export default {
       return this.list[this.kind]
     }
   },
+  async mounted () {
+    const self = this
+    const { status, data: { count, pois } } = await self.$axios.get('/search/resultsByKeywords', {
+      params: {
+        keyword: '景点',
+        city: self.$store.state.geo.position.city
+      }
+    })
+    if (status === 200 && count > 0) {
+      const r = pois.filter(item => item.photos.length).map((item) => {
+        return {
+          title: item.name,
+          pos: item.type.split(';')[0],
+          price: item.biz_ext.cost || '暂无',
+          img: item.photos[0].url,
+          url: '//abc.com'
+        }
+      })
+      self.list[self.kind] = r.slice(0, 9)
+    } else {
+      self.list[self.kind] = []
+    }
+  },
   methods: {
-    // eslint-disable-next-line
-    over:function () {
-
+    async over (e) {
+      const dom = e.target
+      const tag = dom.tagName.toLowerCase()
+      const self = this
+      if (tag === 'dd') {
+        this.kind = dom.getAttribute('kind')
+        const keyword = dom.getAttribute('keyword')
+        const { status, data: { count, pois } } = await self.$axios.get('/search/resultsByKeywords', {
+          params: {
+            keyword,
+            city: self.$store.state.geo.position.city
+          }
+        })
+        if (status === 200 && count > 0) {
+          const r = pois.filter(item => item.photos.length).map((item) => {
+            return {
+              title: item.name,
+              pos: item.type.split(';')[0],
+              price: item.biz_ext.cost || '暂无',
+              img: item.photos[0].url,
+              url: '//abc.com'
+            }
+          })
+          self.list[self.kind] = r.slice(0, 9)
+        } else {
+          self.list[self.kind] = []
+        }
+      }
     }
   }
 
